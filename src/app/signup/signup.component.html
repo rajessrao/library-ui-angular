@@ -8,14 +8,14 @@
                         <h3 class="title">Welcome</h3>
                         <form class="register-form">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" placeholder="Full Name">
+                            <input type="text" class="form-control" placeholder="Full Name" [(ngModel)]="user.fullName" [ngModelOptions]="{standalone: true}" required>
 
                             <label>Email</label>
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" required>
 
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
-                            <button class="btn btn-danger btn-block btn-round">Register</button>
+                            <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" required>
+                            <button class="btn btn-danger btn-block btn-round" (click)="signUpWithEmail()">Register</button>
                         </form>
                         <div class="forgot">
                             <a [routerLink]="['/forgotpwd']"  class="btn btn-link btn-danger">Forgot password?</a>

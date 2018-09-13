@@ -14,12 +14,15 @@
                 <li class="nav-item">
                     <a [routerLink]="['/library']" class="nav-link">Library</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+                    <a [routerLink]="['/login']" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item" *ngIf="authService.isLoggedIn()">
                     <div ngbDropdown class="d-inline-block dropdown">
-                        <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Rajesh Kumar</a>
+                        <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>{{userEmail}}</a>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-primary">
                             <a [routerLink]="['/profile']" class="dropdown-item">Profile</a>
-                            <a class="dropdown-item">Logout</a>
+                            <a class="dropdown-item" (click)="logout()">Logout</a>
                         </div>
                     </div>
                 </li>

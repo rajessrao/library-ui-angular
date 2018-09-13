@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');">
+        <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                        <div class="card card-register">
+                            <h3 class="title">Welcome again..!</h3>
+                            <span class="error" *ngIf="error">{{ error }}</span>
+                            <button class="btn btn-danger btn-lg" (click)="signInWithGoogle()"><i class="fa fa-google"></i>&nbsp;&nbsp; Login with Google</button>
+                            <button class="btn btn-danger btn-lg" [routerLink]="['/signin']"><i class="fa fa-envelope"></i>&nbsp;&nbsp; Login with email</button>
+                            <div class="forgot">
+                                <a [routerLink]="['/signup']" class="btn btn-link btn-danger">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

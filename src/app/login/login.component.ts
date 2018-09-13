@@ -3,18 +3,18 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
-    selector: 'app-signin',
-    templateUrl: './signin.component.html',
-    styleUrls: ['./signin.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class LoginComponent implements OnInit {
     test: Date = new Date();
-    user: any = { email: '', password: '' };
+    error: any;
 
     constructor(private authService: AuthService, private router: Router) { }
 
-    signInWithEmail() {
-        this.authService.signInWithEmail(this.user.email, this.user.password).then((res) => {
+    signInWithGoogle() {
+        this.authService.signInWithGoogle().then((res) => {
             this.router.navigate(['library']);
         }).catch((err) => console.log(err));
     }
