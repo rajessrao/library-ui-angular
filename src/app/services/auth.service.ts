@@ -26,15 +26,27 @@ export class AuthService {
   }
 
   signUpWithEmail(email, password) {
-    return this._firebaseAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password);
+    return this._firebaseAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
+      .then(credential => {
+        localStorage.setItem('userEmail', credential.user.email);
+        this.userDetails = credential.user;
+      });
   }
 
   signInWithGoogle() {
-    return this._firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider);
+    return this._firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider)
+      .then(credential => {
+        localStorage.setItem('userEmail', credential.user.email);
+        this.userDetails = credential.user;
+      });
   }
 
   signInWithEmail(email, password) {
-    return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password);
+    return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+      .then(credential => {
+        localStorage.setItem('userEmail', credential.user.email);
+        this.userDetails = credential.user;
+      });
   }
 
   isLoggedIn() {
@@ -48,7 +60,8 @@ export class AuthService {
   logout() {
     this._firebaseAuth.auth.signOut()
       .then((res) => {
-        localStorage.setItem('userEmail', null);
+        localStorage.clear();
+        // localStorage.setItem('userEmail', null);
         this.router.navigate(['/'])
       });
   }

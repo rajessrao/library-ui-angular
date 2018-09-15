@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
 
     constructor(private authService: AuthService, public location: Location, private element: ElementRef) {
         this.sidebarVisible = false;
+        this.userEmail = localStorage.getItem('userEmail');
     }
 
     logout() {
