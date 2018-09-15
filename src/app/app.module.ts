@@ -7,16 +7,16 @@ import { AppRoutingModule } from './app.routing';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
-import { LibraryComponent } from './library/library.component';
-import { DetailsComponent } from './details/details.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { ForgotpwdComponent } from './components/forgotpwd/forgotpwd.component';
+import { LibraryComponent } from './components/library/library.component';
+import { DetailsComponent } from './components/details/details.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';

@@ -3,14 +3,14 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
-import { SigninComponent } from './signin/signin.component';
-import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
-import { LibraryComponent } from './library/library.component';
-import { DetailsComponent } from './details/details.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { ForgotpwdComponent } from './components/forgotpwd/forgotpwd.component';
+import { LibraryComponent } from './components/library/library.component';
+import { DetailsComponent } from './components/details/details.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
