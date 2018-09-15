@@ -14,14 +14,14 @@ import { DetailsComponent } from './details/details.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'profile',    component: ProfileComponent },
-  { path: 'login',      component: LoginComponent },
-  { path: 'signup',     component: SignupComponent },
-  { path: 'signin',     component: SigninComponent },
-  { path: 'forgotpwd',  component: ForgotpwdComponent },
-  { path: 'library',    component: LibraryComponent },
-  { path: 'details',    component: DetailsComponent },
-  { path: 'landing',    component: LandingComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'forgotpwd', component: ForgotpwdComponent },
+  { path: 'library', component: LibraryComponent },
+  { path: 'details', component: DetailsComponent },
+  { path: 'landing', component: LandingComponent },
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
