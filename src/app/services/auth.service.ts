@@ -16,7 +16,7 @@ export class AuthService {
     this.user.subscribe(
       (user) => {
         if (user) {
-          localStorage.setItem('userEmail', user.email);
+          localStorage.setItem('currUser', user.uid);
           this.userDetails = user;
         } else {
           this.userDetails = null;
@@ -28,7 +28,7 @@ export class AuthService {
   signUpWithEmail(email, password) {
     return this._firebaseAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
       .then(credential => {
-        localStorage.setItem('userEmail', credential.user.email);
+        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }
@@ -36,7 +36,8 @@ export class AuthService {
   signInWithGoogle() {
     return this._firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider)
       .then(credential => {
-        localStorage.setItem('userEmail', credential.user.email);
+        console.log(credential);
+        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }
@@ -44,7 +45,7 @@ export class AuthService {
   signInWithEmail(email, password) {
     return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
       .then(credential => {
-        localStorage.setItem('userEmail', credential.user.email);
+        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }
@@ -61,7 +62,6 @@ export class AuthService {
     this._firebaseAuth.auth.signOut()
       .then((res) => {
         localStorage.clear();
-        // localStorage.setItem('userEmail', null);
         this.router.navigate(['/'])
       });
   }

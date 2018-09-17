@@ -5,5 +5,6 @@ export class Book {
     description: string;
     availability: boolean;
     purpose: string;
+    location: string;
     userid: string;
 }

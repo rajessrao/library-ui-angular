@@ -18,6 +18,10 @@
                     <p>New Bowenpally, Secundrabad</p>
                     <br />
                     <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Edit Profile</button>
+                    &nbsp;
+                    <button class="btn btn-outline-default btn-round"><i class="fa fa-plus"></i> Share Book</button>
+                    &nbsp;
+                    <button class="btn btn-outline-default btn-round"><i class="fa fa-plus"></i> Donate Book</button>
                 </div>
             </div>
             <br />
@@ -26,35 +30,29 @@
                     <ngb-tabset [justify]="'center'">
                         <ngb-tab title="Shared Books">
                             <ng-template ngbTabContent>
-                                <div class="row following" id="follows">
+                                <div class="row following" id="shared">
                                     <div class="col-md-8 ml-auto mr-auto">
                                         <table class="table table-hover">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Shared</th>
-                                                    <th scope="col">Last</th>
-                                                    <th scope="col">Handle</th>
+                                                    <th>Title</th>
+                                                    <th>Author</th>
+                                                    <th>Availability</th>
+                                                    <th>Purpose</th>
+                                                    <th>Location</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
+                                                <tr *ngFor="let book of sharedBookList">
+                                                    <td>{{book.title}}</td>
+                                                    <td>{{book.author}}</td>
+                                                    <td>{{book.availability === 'true' ? 'Available' : 'Not Available'}}</td>
+                                                    <td>{{book.purpose}}</td>
+                                                    <td>{{book.location}}</td>
+                                                    <td>
+                                                        <button class="btn btn-just-icon" (click)="bookService.populateBookForm(book)"><i class="fa fa-pencil"></i></button>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -64,35 +62,29 @@
                         </ngb-tab>
                         <ngb-tab title="Donated Books">
                             <ng-template ngbTabContent>
-                                <div class="row following" id="follows">
+                                <div class="row following" id="donated">
                                     <div class="col-md-8 ml-auto mr-auto">
                                         <table class="table table-hover">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Donated</th>
-                                                    <th scope="col">Last</th>
-                                                    <th scope="col">Handle</th>
+                                                    <th>Title</th>
+                                                    <th>Author</th>
+                                                    <th>Availability</th>
+                                                    <th>Purpose</th>
+                                                    <th>Location</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
+                                                <tr *ngFor="let book of donatedBookList">
+                                                    <td>{{book.title}}</td>
+                                                    <td>{{book.author}}</td>
+                                                    <td>{{book.availability === 'true' ? 'Available' : 'Not Available'}}</td>
+                                                    <td>{{book.purpose}}</td>
+                                                    <td>{{book.location}}</td>
+                                                    <td>
+                                                        <button class="btn btn-just-icon" (click)="bookService.populateBookForm(book)"><i class="fa fa-pencil"></i></button>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -102,7 +94,7 @@
                         </ngb-tab>
                         <ngb-tab title="Incoming Requests">
                             <ng-template ngbTabContent>
-                                <div class="row following" id="follows">
+                                <div class="row following" id="incoming">
                                     <div class="col-md-8 ml-auto mr-auto">
                                         <table class="table table-hover">
                                             <thead class="thead-dark">
@@ -140,7 +132,7 @@
                         </ngb-tab>
                         <ngb-tab title="Outgoing Requests">
                             <ng-template ngbTabContent>
-                                <div class="row following" id="follows">
+                                <div class="row following" id="outgoing">
                                     <div class="col-md-8 ml-auto mr-auto">
                                         <table class="table table-hover">
                                             <thead class="thead-dark">
@@ -172,6 +164,15 @@
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Share/Donate Book(s)">
+                            <ng-template ngbTabContent>
+                                <div class="row following" id="newbook">
+                                    <div class="col-md-8 ml-auto mr-auto">
+                                        <app-book-new></app-book-new>
                                     </div>
                                 </div>
                             </ng-template>
