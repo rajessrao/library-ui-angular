@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 
 export class AuthService {
-  private user: Observable<firebase.User>;
-  private userDetails: firebase.User = null;
+  public user: Observable<firebase.User>;
+  public userDetails: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = _firebaseAuth.authState;
@@ -16,7 +16,6 @@ export class AuthService {
     this.user.subscribe(
       (user) => {
         if (user) {
-          localStorage.setItem('currUser', user.uid);
           this.userDetails = user;
         } else {
           this.userDetails = null;
@@ -28,7 +27,6 @@ export class AuthService {
   signUpWithEmail(email, password) {
     return this._firebaseAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email, password)
       .then(credential => {
-        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }
@@ -37,7 +35,6 @@ export class AuthService {
     return this._firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider)
       .then(credential => {
         console.log(credential);
-        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }
@@ -45,7 +42,6 @@ export class AuthService {
   signInWithEmail(email, password) {
     return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
       .then(credential => {
-        localStorage.setItem('currUser', credential.user.uid);
         this.userDetails = credential.user;
       });
   }

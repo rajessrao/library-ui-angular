@@ -10,11 +10,15 @@ import { AuthService } from '../../../services/auth.service';
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-    public userEmail: string = localStorage.getItem('userEmail');
+    public user: any;
 
     constructor(private authService: AuthService, public location: Location, private element: ElementRef) {
         this.sidebarVisible = false;
-        this.userEmail = localStorage.getItem('userEmail');
+        this.authService.user.subscribe(user => {
+            if (user) {
+                this.user = user;
+            }
+        });
     }
 
     logout() {
