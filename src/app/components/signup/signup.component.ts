@@ -8,13 +8,13 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-    test : Date = new Date();
-    user: any = { email: '', password: '' };
+    test: Date = new Date();
+    user: any = { fullName: '', mobile: '', email: '', password: '' };
 
     constructor(private authService: AuthService, private router: Router) { }
 
     signUpWithEmail() {
-        this.authService.signUpWithEmail(this.user.email, this.user.password).then((res) => {
+        this.authService.signUpWithEmail(this.user).then((res) => {
             this.router.navigate(['library']);
         }).catch((err) => console.log(err));
     }

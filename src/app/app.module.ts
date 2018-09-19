@@ -21,6 +21,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { BookService } from './services/book.service';
+import { UserService } from './services/user.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -55,7 +56,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService, AuthGuard, BookService],
+  providers: [AuthService, AuthGuard, BookService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
