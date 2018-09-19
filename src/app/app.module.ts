@@ -27,7 +27,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { BookNewComponent } from './components/book-new/book-new.component';
-import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    BookNewComponent,
-    BookListComponent
+    BookNewComponent
   ],
   imports: [
     BrowserModule,

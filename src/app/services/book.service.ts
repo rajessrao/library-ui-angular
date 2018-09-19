@@ -27,7 +27,15 @@ export class BookService {
   }
 
   addBook(book) {
-    this.bookList.push(book);
+    this.bookList.push({
+      title: book.title,
+      author: book.author,
+      description: book.description,
+      availability: book.availability,
+      purpose: book.purpose,
+      location: book.location,
+      userid: book.userid
+    });
   }
 
   updateBook(book) {

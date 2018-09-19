@@ -1,64 +1,77 @@
-<form [formGroup]="this.bookService.bookForm" (ngSubmit)="onSubmit()">
-  <input type="hidden" formControlName="userid">
-  <input type="hidden" fromControlName="id">
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="form-group">
-        <label>Title</label>
-        <input type="text" formControlName="title" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.title.errors}">
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.title.errors">
-          This field is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Author</label>
-        <input type="text" formControlName="author" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.author.errors}">
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.author.errors">
-          This field is required.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Availability</label>
-        <select formControlName="availability" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.availability.errors}">
-          <option value="true">Available</option>
-          <option value="false">Not Available</option>
-        </select>
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.availability.errors">
-          This field is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Purpose</label>
-        <select formControlName="purpose" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.purpose.errors}">
-          <option>Share</option>
-          <option>Donate</option>
-        </select>
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.purpose.errors">
-          This field is required.
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Location</label>
-        <input type="text" formControlName="location" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.location.errors}">
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.location.errors">
-          This field is required.
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <div class="form-group">
-        <label>Description</label>
-        <textarea rows="10" type="text" formControlName="description" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.description.errors}"></textarea>
-        <div class="invalid-feedback" *ngIf="submitted && bookFormControls.description.errors">
-          <label *ngIf="submitted && bookFormControls.description.errors.required">This field is required.</label>
-          <label *ngIf="submitted && bookFormControls.description.errors.minlength">Minimum 50 characters.</label>
-          <label *ngIf="submitted && bookFormControls.description.errors.maxlength">Miximum 200 characters.</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-danger btn-lg">
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/login-image.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+      <div class="motto text-center">
+        <h1>Welcome</h1>
+        <h3>Add book for share/donate</h3>
       </div>
     </div>
   </div>
-</form>
+  <div class="container" style="padding-top: 20px;">
+    <form [formGroup]="this.bookService.bookForm" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="userid">
+      <input type="hidden" fromControlName="$key">
+      <div class="row">
+        <div class="col-sm-7">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" formControlName="title" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.title.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.title.errors">
+              This field is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <input type="text" formControlName="author" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.author.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.author.errors">
+              This field is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Availability</label>
+            <select formControlName="availability" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.availability.errors}">
+              <option value="true">Available</option>
+              <option value="false">Not Available</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.availability.errors">
+              This field is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Purpose</label>
+            <select formControlName="purpose" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.purpose.errors}">
+              <option>Share</option>
+              <option>Donate</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.purpose.errors">
+              This field is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" formControlName="location" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.location.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.location.errors">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea rows="10" type="text" formControlName="description" class="form-control" [ngClass]="{'is-invalid': submitted && bookFormControls.description.errors}"></textarea>
+            <div class="invalid-feedback" *ngIf="submitted && bookFormControls.description.errors">
+              <label *ngIf="submitted && bookFormControls.description.errors.required">This field is required.</label>
+              <label *ngIf="submitted && bookFormControls.description.errors.minlength">Minimum 50 characters.</label>
+              <label *ngIf="submitted && bookFormControls.description.errors.maxlength">Miximum 200 characters.</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-danger btn-lg">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-new',
@@ -13,7 +14,7 @@ export class BookNewComponent implements OnInit {
   loggedInUserId: string;
   bookFormControls = this.bookService.bookForm.controls;
 
-  constructor(private authService: AuthService, private bookService: BookService) {
+  constructor(private router: Router, private authService: AuthService, private bookService: BookService) {
     this.authService.user.subscribe(user => {
       if (user) {
         this.loggedInUserId = user.uid;
@@ -37,6 +38,7 @@ export class BookNewComponent implements OnInit {
       }
       this.bookService.bookForm.reset();
       this.submitted = false;
+      this.router.navigate(['profile']);
     }
 
   }

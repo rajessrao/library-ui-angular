@@ -12,6 +12,7 @@ import { ForgotpwdComponent } from './components/forgotpwd/forgotpwd.component';
 import { LibraryComponent } from './components/library/library.component';
 import { DetailsComponent } from './components/details/details.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { BookNewComponent } from './components/book-new/book-new.component';
 
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'library', component: LibraryComponent },
   { path: 'details', component: DetailsComponent },
   { path: 'landing', component: LandingComponent },
+  { path: 'new-book', component: BookNewComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
