@@ -4,4 +4,5 @@ export class BookRatingsAndReviews {
     userid: string;
     rating: number;
     review: string;
+    datetime: Date;
 }
